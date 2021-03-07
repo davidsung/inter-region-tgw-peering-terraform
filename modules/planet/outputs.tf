@@ -2,6 +2,14 @@ output "vpc_id" {
   value = module.vpc.vpc_id
 }
 
+output "vpc_public_subnets" {
+  value = module.vpc.public_subnets
+}
+
+output "vpc_private_subnets" {
+  value = module.vpc.private_subnets
+}
+
 output "vpc_public_route_table_ids" {
   value = module.vpc.public_route_table_ids
 }
@@ -36,14 +44,14 @@ output "windows_network" {
   }
 }
 
-output "transit_gateway_id" {
-  value = aws_ec2_transit_gateway.tgw.id
-}
-
-output "transit_gateway_association_default_route_table_id" {
-  value = aws_ec2_transit_gateway.tgw.association_default_route_table_id
-}
-
-output "transit_gateway_vpc_attachment" {
-  value = aws_ec2_transit_gateway_vpc_attachment.tgw_attachment.id
-}
+//output "transit_gateway_id" {
+//  value = aws_ec2_transit_gateway.tgw.id
+//}
+//
+//output "transit_gateway_association_default_route_table_id" {
+//  value = aws_ec2_transit_gateway.tgw.association_default_route_table_id
+//}
+//
+//output "transit_gateway_vpc_attachment" {
+//  value = aws_ec2_transit_gateway_vpc_attachment.tgw_attachment.id
+//}

@@ -23,16 +23,16 @@ output "venus_vpc_id" {
 }
 
 output "earth_tgw_id" {
-  value = module.earth.transit_gateway_id
+  value = module.earth_transit_gateway.transit_gateway_id
 }
 
 output "mars_tgw_id" {
-  value = module.mars.transit_gateway_id
+  value = module.mars_transit_gateway.transit_gateway_id
 }
 
-output "venus_tgw_id" {
-  value = module.venus.transit_gateway_id
-}
+//output "venus_tgw_id" {
+//  value = module.venus_transit_gateway.transit_gateway_id
+//}
 
 output "earth_linux_instance_id" {
   value = module.earth.linux_instance_id
