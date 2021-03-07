@@ -2,11 +2,7 @@ variable "name" {
   type = string
 }
 
-//variable "vpc_name" {
-//  type = string
-//  default = "vpc"
-//}
-
+// VPC
 variable "vpc_cidr" {
   type = string
   default = "10.0.0.0/16"
@@ -49,19 +45,9 @@ variable "app_whitelist_cidrs" {
   default = null
 }
 
-variable "rdp_enabled" {
-  type = bool
-  default = false
-}
-
-variable "rdp_whitelist_cidr" {
-  type = string
+variable "rdp_whitelist_cidrs" {
+  type = list(string)
   default = null
-}
-
-variable "icmp_enabled" {
-  type = bool
-  default = false
 }
 
 variable "icmp_whitelist_cidrs" {

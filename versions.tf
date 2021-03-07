@@ -24,6 +24,6 @@ provider "aws" {
 }
 
 provider "aws" {
-  alias  = "mercury"
-  region = "ap-southeast-1"
+  alias  = "earth"
+  region = var.earth_region
 }

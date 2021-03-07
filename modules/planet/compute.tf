@@ -18,16 +18,17 @@ resource "aws_security_group" "compute_security_group" {
 }
 
 resource "aws_security_group_rule" "ingress_allow_rdp" {
-  count             = var.rdp_enabled && var.rdp_whitelist_cidr != null ? 1 : 0
+  count             = var.rdp_whitelist_cidrs != null ? 1 : 0
   type              = "ingress"
   from_port         = local.rdp.port
   to_port           = local.rdp.port
   protocol          = local.rdp.protocol
-  cidr_blocks       = [var.rdp_whitelist_cidr]
+  cidr_blocks       = var.rdp_whitelist_cidrs
   security_group_id = aws_security_group.compute_security_group.id
 }
 
 resource "aws_security_group_rule" "ingress_allow_app_port" {
+  count             = var.app_whitelist_cidrs != null ? 1 : 0
   type              = "ingress"
   from_port         = var.app_port
   to_port           = var.app_port
@@ -38,7 +39,7 @@ resource "aws_security_group_rule" "ingress_allow_app_port" {
 
 // Allow icmp
 resource "aws_security_group_rule" "ingress_allow_icmp" {
-  count             = var.icmp_enabled ? 1 : 0
+  count             = var.icmp_whitelist_cidrs != null ? 1 : 0
   type              = "ingress"
   from_port         = local.icmp.port
   to_port           = local.icmp.port
@@ -79,9 +80,12 @@ module "compute_linux" {
   iam_instance_profile   = module.ssm_instance_profile.instance_profile_name
   user_data              = templatefile("${path.module}/templates/init.tpl", {})
 
-  tags = merge(var.tags,{
-    Name        = "Linux"
-  })
+  tags = merge(
+    var.tags,
+    {
+      Name        = "Amazon Linux 2"
+    }
+  )
 }
 
 module "compute_windows_server" {
@@ -94,7 +98,10 @@ module "compute_windows_server" {
   iam_instance_profile   = module.ssm_instance_profile.instance_profile_name
   key_name               = var.key_name
 
-  tags = merge(var.tags,{
-    Name        = data.aws_ami.windows_server.name
-  })
+  tags = merge(
+    var.tags,
+    {
+      Name        = data.aws_ami.windows_server.name
+    }
+  )
 }

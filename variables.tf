@@ -4,12 +4,6 @@ variable "environment" {
   description = "Environment name"
 }
 
-variable "earth_vpc_name" {
-  type        = string
-  default     = "earth-vpc"
-  description = "VPC name in Earth"
-}
-
 variable "earth_region" {
   type        = string
   default     = "us-east-1"
@@ -29,8 +23,8 @@ variable "earth_vpc_cidr" {
 }
 
 variable "mercury_vpc_cidr" {
-  type = string
-  default = "10.3.0.0/16"
+  type        = string
+  default     = "10.3.0.0/16"
   description = "VPC CIDR in Mercury"
 }
 
@@ -44,12 +38,6 @@ variable "mars_asn" {
   type        = number
   default     = 64513
   description = "Mars Amazon Side ASN"
-}
-
-variable "mars_vpc_name" {
-  type        = string
-  default     = "mars-vpc"
-  description = "VPC name in Mars"
 }
 
 variable "mars_vpc_cidr" {
@@ -70,12 +58,6 @@ variable "venus_asn" {
   description = "Venus Amazon Side ASN"
 }
 
-variable "venus_vpc_name" {
-  type        = string
-  default     = "venus-vpc"
-  description = "VPC name in Venus"
-}
-
 variable "venus_vpc_cidr" {
   type        = string
   default     = "10.2.0.0/16"
@@ -88,7 +70,7 @@ variable "instance_type" {
   description = "EC2 Instance Type in each region"
 }
 
-variable "eni_count" {
+variable "network_interface_count" {
   type        = number
   default     = 1
   description = "Total ENI(s) attached to EC2 Instance"
