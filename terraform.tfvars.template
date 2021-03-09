@@ -1,0 +1,8 @@
+instance_type           = "c5.2xlarge"
+network_interface_count = 2
+// Windows Instances
+// Uncomment below 2 lines if you need to use RDP access to the Windows instances,
+// 1. `rdp_whitelist_cidr` provide the IP access CIDR (e.g. 1.2.3.4/32) you are connecting from
+// 2. `key_name` provide the AWS Key Pair Name already created in AWS Console
+# rdp_whitelist_cidr      = "[w.x.y.z]/c"
+# key_name                = "deployer"

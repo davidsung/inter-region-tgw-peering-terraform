@@ -50,8 +50,8 @@ resource "aws_network_interface" "this" {
 //  }
 //}
 //
-//resource "aws_eip" "this" {
-//  count = var.eni_count - 1
-//  vpc = true
-//  network_interface = aws_network_interface.this[count.index].id
-//}
+resource "aws_eip" "this" {
+  count = var.eni_count - 1
+  vpc = true
+  network_interface = aws_network_interface.this[count.index].id
+}
