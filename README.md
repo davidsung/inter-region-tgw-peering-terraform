@@ -1,4 +1,4 @@
-# Transit Gateway Inter Region Peering
+# Transit Gateway Inter Region Peering in Terraform
 ![Architecture](asset/architecture.png)
 
 ## Preparation
